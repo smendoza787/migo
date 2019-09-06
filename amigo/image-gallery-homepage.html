@@ -1,0 +1,220 @@
+<style>
+  .Amigo--ImageGallery-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+  
+  .Amigo--ImageGallery-Header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 4rem;
+    font-size: 3rem;
+    color: red;
+    width: 100%;
+  }
+  
+  @media only screen and (min-width: 1000px) {
+    .Amigo--ImageGallery-Header {
+      flex-direction: row;
+      width: 60rem;
+      padding-bottom: 5rem;
+    }
+
+    .Amigo--ImageGallery-Header-Line {
+      border-top: 2px solid black;
+      width: 50%;
+    }
+  }
+  
+  @media only screen and (max-width: 1000px) {
+    .Amigo--ImageGallery-Header {
+      font-size: 1.5rem;
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+    }
+    
+    .ImageGallery-Header-Node {
+      width: 70% !important;
+    }
+
+    .ImageGallery-Header-Node p {
+      text-align: center;
+    }
+  }
+  
+  .Amigo--ImageGallery-Header h2 {
+  	color: red;
+  }
+
+  .ImageGallery-Header-Node {
+    width: 50%;
+  }
+  
+  .Amigo--ImageGallery-Header-Line {
+  	border-top: 2px solid black;
+    width: 100%;
+  }
+  
+  .Amigo--ImageGallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100rem;
+  }
+  
+  .Amigo--ImageGallery-Image {
+  	max-width: 28rem !important;
+  }
+
+  .Amigo--ImageGallery-Image-Caption {
+    max-width: 25rem;
+  }
+
+  @media only screen and (min-width: 1000px) {
+    .Amigo--ImageGallery-Image-Caption {
+      max-width: 28rem;
+    }
+
+    .ImageGallery-Header-Node:first-of-type {
+      margin-right: 1.5rem;
+    }
+
+    .ImageGallery-Header-Node:last-of-type {
+      margin-left: 1.5rem;
+      text-align: right;
+    }
+  }
+  
+  @media only screen and (max-width: 1000px) {
+    .Amigo--ImageGallery-Image {
+      width: 100%;
+    }
+
+    .Amigo--ImageGallery {
+      width: 100%;
+      height: auto;
+      align-items: flex-start;
+    }
+
+    .Amigo--ImageGallery-ImageWrapper {
+      width: 100%;
+    }
+  }
+
+  .Amigo--ImageGallery-ImageWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+  
+  .Amigo--ImageGallery-Image-Caption {
+    font-size: 1.25rem;
+    margin-left: auto;
+    margin-right: 2rem;
+    bottom: -15rem;
+  }
+  
+  @media screen and (min-width: 1000px) {
+    .Amigo--ImageGallery-Image-Caption {
+      position: absolute;
+    }
+  }
+  
+  .Amigo--ImageGallery-Image-Caption h3 {
+  	color: red;
+    margin-top: 1rem !important;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  
+  @media only screen (min-width: 1000px) {
+    .Amigo--ImageGallery-Image-Caption h3 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .Amigo--ImageGallery-Image-Caption p {
+  	color: black;
+  }
+
+  .Amigo--ImageGallery-Row {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+    text-align: justify;
+  }
+  
+  @media only screen and (min-width: 1000px) {
+    .Amigo--ImageGallery-Row {
+      width: 60rem;
+    }
+
+    .Index-page-content {
+      padding-bottom: 275px;
+    }
+  }
+    
+  .Amigo--ImageGallery-Row:nth-child(even) {
+  	justify-content: flex-end;
+  }
+
+
+</style>
+
+<div class="Amigo--ImageGallery-Container">
+  <div class="Amigo--ImageGallery-Header">
+    <div class="ImageGallery-Header-Node">
+      <p>STAY AWHILE</p>
+    </div>
+    <div class="Amigo--ImageGallery-Header-Line"></div>
+    <div class="ImageGallery-Header-Node">
+      <p>THINGS TO DO</p>
+    </div>
+  </div>
+  <div class="Amigo--ImageGallery">
+  <div class="Amigo--ImageGallery-Row">
+    <div class="Amigo--ImageGallery-ImageWrapper">
+      <img class="Amigo--ImageGallery-Image" src="https://i.imgur.com/waM4ak9.png" />
+      <div class="Amigo--ImageGallery-Image-Caption">
+        <h3>IN TOWN <span>→</span></h3>
+        <p>Downtown Salida is about a mile away from the motel. You can obviously reach it by car, but it’s an easy bike ride down the Monarch Spur trail too. If you plan on drinking, consider taking a ride with Mountain Taxi or sometimes you can catch a random Uber. For larger groups, check out Colorado Adventure Tours.</p>
+      </div>
+    </div>
+  </div>
+  <div class="Amigo--ImageGallery-Row">
+    <div class="Amigo--ImageGallery-ImageWrapper">
+      <img class="Amigo--ImageGallery-Image" src="https://i.imgur.com/zPJf70S.png" />
+      <div class="Amigo--ImageGallery-Image-Caption">
+        <h3>OUTDOORS <span>→</span></h3>
+        <p>We have more 14ers outside our door than just about any spot in Colorado. Try Shavano, Princeton, Yale, Harvard, Elbert and many more. 14ers.com is a great site to explore for routes and trailheads. There are also tons of more mild (and often more scenic) hikes like the Greens Creek, Lost Lake and Waterdog Lakes.</p>
+      </div>
+    </div>
+  </div>
+  <div class="Amigo--ImageGallery-Row">
+    <div class="Amigo--ImageGallery-ImageWrapper">
+      <img class="Amigo--ImageGallery-Image" src="https://i.imgur.com/ogg7aqa.png" />
+      <div class="Amigo--ImageGallery-Image-Caption">
+        <h3>FOOD + DRINK <span>→</span></h3>
+        <p>While we have coffee, tea, fruit and yogurt in the lobby starting at 7:30, sometimes you need a little more to get you going. For that we suggest Seasons Cafe or Shallots.</p>
+      </div>
+    </div>
+  </div>
+  <div class="Amigo--ImageGallery-Row">
+    <div class="Amigo--ImageGallery-ImageWrapper">
+      <img class="Amigo--ImageGallery-Image" src="https://i.imgur.com/zs21lP8.png" />
+      <div class="Amigo--ImageGallery-Image-Caption">
+        <h3>DAY TRIPS <span>→</span></h3>
+        <p>Sometimes you just don't want to leave the comfort of your heated car seats, and for that we suggest a trip up Cottonwood Pass. Or if you have decent car clearance (or you got the extended coverage on your rental) drive to the old mining town of St Elmo or check out the Continental Divide up Marshall Pass.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

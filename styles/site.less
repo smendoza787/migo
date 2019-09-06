@@ -1,0 +1,1277 @@
+// =======================================================
+// __          __   _       _     _
+// \ \        / /  (_)     | |   | |
+//  \ \  /\  / / __ _  __ _| |__ | |_
+//   \ \/  \/ / '__| |/ _` | '_ \| __|
+//    \  /\  /| |  | | (_| | | | | |_
+//     \/  \/ |_|  |_|\__, |_| |_|\__|
+//                     __/ |
+//                    |___/
+// =======================================================
+
+@media screen and (max-width: 640px) {
+  @import "sqs-grid-breaker";
+}
+
+// =======================================================
+
+//    HTML & Body
+
+// =======================================================
+
+[data-ajax-loading] & {
+  cursor: progress;
+}
+
+html {
+  pointer-events: auto;
+}
+
+body {
+  &.tweak-site-width-option-constrained-width {
+    background-color: @tweak-site-body-background-color;
+    .font-smoothing(@tweak-site-body-background-color);
+  }
+
+  &.tweak-site-width-option-full-width,
+  &.tweak-site-width-option-full-background {
+    // Full width, get background from site border
+    background-color: @tweak-site-border-color;
+    .font-smoothing(@tweak-site-border-color);
+
+    &.tweak-footer-show:not(.tweak-site-border-show) {
+      // No site border, get background from footer bottom
+      background-color: @tweak-footer-color;
+      .font-smoothing(@tweak-footer-color);
+    }
+  }
+}
+
+// =======================================================
+
+//    Loader
+
+// =======================================================
+
+.Loader {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: @tweak-site-ajax-loading-bar-width;
+  z-index: 9999;
+
+  background-color: transparent;
+  .transition2(background-color 0.3s ease-out, transform 0s 0.3s linear);
+
+  [data-mercury-loading] & {
+    background-color: @tweak-site-ajax-loading-bar-color;
+    .transition(transform 0.3s cubic-bezier(0, 0, 0, 0.618));
+    .transform(translatex(60%));
+  }
+  [data-mercury-loading="done"] & {
+    .transform(translatex(100%));
+  }
+
+  // Show
+  display: none;
+  .tweak-site-ajax-loading-enable.tweak-site-ajax-loading-bar-show & {
+    display: block;
+  }
+}
+
+.Intro-content,
+.Main-content,
+.Index-page-content {
+  .animation(anim-opacity-full 480ms ease-out);
+}
+
+// =======================================================
+
+//    Images
+
+// =======================================================
+
+// Hide ImageLoader images prior to being loaded, so you
+// don't see the broken image graphic in some browsers
+img[data-src]:not([src]) {
+  opacity: 0;
+}
+
+// =======================================================
+
+//    Content Colors
+
+// =======================================================
+
+// -----------------------------------------
+
+//  Headings
+
+.mixin-template-heading-color (@h1-color, @h2-color, @h3-color) {
+  h1 {
+    color: @h1-color;
+    a {
+      .link-style(@h1-color);
+    }
+  }
+  h2 {
+    color: @h2-color;
+    a {
+      .link-style(@h2-color);
+    }
+  }
+  h3 {
+    color: @h3-color;
+    a {
+      .link-style(@h3-color);
+    }
+  }
+}
+
+// -----------------------------------------
+
+//  Links
+
+.mixin-template-link-color (@color) {
+  .sqs-block-html,
+  .sqs-block-markdown,
+  .sqs-block-image {
+    p,
+    blockquote,
+    ol,
+    ul {
+      a {
+        .link-color(@color);
+        .link-style(@color);
+      }
+    }
+  }
+
+  .sqs-block-twitter .tweet-text a {
+    .link-color(@color);
+  }
+}
+
+// -----------------------------------------
+
+//  Lines
+
+.mixin-template-line-color (@color) {
+  .sqs-block-horizontalrule hr {
+    color: @color;
+    background-color: @color;
+  }
+  .sqs-block-html,
+  .sqs-block-markdown {
+    blockquote {
+      border-color: @color;
+    }
+  }
+}
+
+// =======================================================
+
+//    Typography
+
+// =======================================================
+
+// -----------------------------------------
+
+//  Body Text
+
+body {
+  .tweak-body-font;
+  color: @tweak-body-text-color;
+}
+
+p {
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// -----------------------------------------
+
+//  Headings
+
+.responsive-font-size-h1 {
+  @media screen and (max-width: 640px) {
+    .max-font-size (32px, @tweak-h1-font-font-size, @tweak-h1-font-letter-spacing);
+  }
+}
+.responsive-font-size-h2 {
+  @media screen and (max-width: 640px) {
+    .max-font-size (28px, @tweak-h2-font-font-size, @tweak-h2-font-letter-spacing);
+  }
+}
+.responsive-font-size-h3 {
+  @media screen and (max-width: 640px) {
+    .max-font-size (24px, @tweak-h3-font-font-size, @tweak-h3-font-letter-spacing);
+  }
+}
+
+h1,
+h2,
+h3 {
+  text-rendering: optimizeLegibility;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  .tweak-h1-font;
+  .responsive-font-size-h1;
+}
+
+h2 {
+  .tweak-h2-font;
+  .responsive-font-size-h2;
+}
+
+h3 {
+  .tweak-h3-font;
+  .responsive-font-size-h3;
+}
+
+h1 + h1,
+h1 + h2,
+h1 + h3,
+h2 + h1,
+h2 + h2,
+h2 + h3,
+h3 + h1,
+h3 + h2,
+h3 + h3 {
+  margin-top: 15px;
+}
+
+.mixin-template-heading-color(@tweak-h1-color, @tweak-h2-color, @tweak-h3-color);
+
+@media screen and (max-width: 640px) {
+  h1,
+  h2,
+  h3 {
+    .hyphens(auto);
+  }
+}
+
+// -----------------------------------------
+
+//  Links
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:active,
+  &:focus {
+    // Remove dotted outline
+    outline: 0;
+  }
+}
+
+.mixin-template-link-color(@tweak-link-color);
+
+// -----------------------------------------
+
+//  Lines
+
+.mixin-template-line-color(@tweak-line-color);
+
+// =======================================================
+
+//    Site
+
+// =======================================================
+
+.Site {
+  .mixin-site-border-mobile-bar-color-top
+    (@border-color, @mobile-bar-color)
+    when
+    (rgba(red(@mobile-bar-color), green(@mobile-bar-color), blue(@mobile-bar-color), 1) = @border-color) {
+    border-top: 0;
+  }
+  .mixin-site-border-mobile-bar-color-bottom
+    (@border-color, @mobile-bar-color)
+    when
+    (rgba(red(@mobile-bar-color), green(@mobile-bar-color), blue(@mobile-bar-color), 1) = @border-color) {
+    border-bottom: 0;
+  }
+
+  .tweak-site-border-show & {
+    border: @tweak-site-border-width solid @tweak-site-border-color;
+    .responsive-border(@tweak-site-border-width);
+
+    // Hide border on top/bottom if respective
+    // mobile bar background colors are the same
+    // as border color.
+    @media screen and (max-width: @tweak-mobile-breakpoint) {
+      .mixin-site-border-mobile-bar-color-top(
+        @tweak-site-border-color,
+        @tweak-mobile-bar-top-background-color
+      );
+      .mixin-site-border-mobile-bar-color-bottom(
+        @tweak-site-border-color,
+        @tweak-mobile-bar-bottom-background-color
+      );
+    }
+  }
+
+  .tweak-site-width-option-constrained-width & {
+    max-width: @tweak-site-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &-inner {
+    position: relative;
+  }
+}
+
+// Width
+.Header-inner,
+.Intro-content,
+.Main-content,
+.Footer-inner,
+.Index-page-content {
+  .tweak-site-width-option-full-background & {
+    max-width: @tweak-site-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// =======================================================
+
+//    Parallax
+
+// =======================================================
+
+.Parallax-host {
+  display: none;
+}
+
+.tweak-overlay-parallax-enabled {
+  // When parallax scrolling occurs, sometimes, the parallax container will
+  // lag behind the actual scroll, leading to body's color showing through. To
+  // solve this, we change body's background color to main color (color of
+  // Index-page, .Main-content) to make it less noticeable, but only on parallax
+  // pages. Can't apply this to constrained background though
+
+  &.has-parallax-images:not(.tweak-site-width-option-constrained-width) {
+    background-color: @tweak-main-background-color !important;
+  }
+
+  .Index-page--has-image,
+  .Intro--has-image {
+    background-color: transparent;
+  }
+  .Parallax-host {
+    display: block;
+  }
+  .Parallax-item {
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+
+    background-color: rgba(
+      red(@tweak-overlay-color),
+      green(@tweak-overlay-color),
+      blue(@tweak-overlay-color),
+      1
+    );
+
+    [data-parallax-image-wrapper] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      margin: 0; // Override
+      .will-change-transform();
+    }
+  }
+
+  &.parallax-item-positioning-method-fixed {
+    .Parallax-item {
+      position: fixed;
+      .will-change-transform();
+    }
+  }
+
+  &.parallax-item-positioning-method-absolute {
+    .Parallax-item {
+      position: absolute;
+    }
+  }
+}
+
+// =======================================================
+
+//    Intro
+
+// =======================================================
+
+// -----------------------------------------
+
+//  Loading
+
+.enable-load-effects {
+  .Intro-image {
+    opacity: 0;
+    .transition(opacity 200ms ease-out);
+    &.loaded {
+      opacity: 1;
+    }
+  }
+}
+
+.Intro {
+  position: relative;
+  overflow: hidden;
+
+  background-color: @tweak-main-background-color;
+  .font-smoothing(@tweak-main-background-color);
+
+  &--has-image {
+    .font-smoothing(@tweak-overlay-color);
+    background-color: rgba(
+      red(@tweak-overlay-color),
+      green(@tweak-overlay-color),
+      blue(@tweak-overlay-color),
+      1
+    );
+
+    // Typography
+    color: @tweak-overlay-body-text-color;
+    .mixin-template-heading-color(
+      @tweak-overlay-h1-color,
+      @tweak-overlay-h2-color,
+      @tweak-overlay-h3-color
+    );
+    .mixin-template-link-color(@tweak-overlay-link-color);
+    .mixin-template-line-color(@tweak-overlay-line-color);
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: @tweak-overlay-color;
+    }
+  }
+
+  &--has-image &-content {
+    position: relative;
+    z-index: 2;
+
+    padding-top: @tweak-main-intro-overlay-padding;
+    padding-bottom: @tweak-main-intro-overlay-padding;
+    .responsive-padding-vertical-large(@tweak-main-intro-overlay-padding);
+  }
+
+  &-content {
+    .border-box;
+    padding: @tweak-main-intro-padding @tweak-site-side-padding;
+    .responsive-padding-vertical-large(@tweak-main-intro-padding);
+    .responsive-padding-horizontal(@tweak-site-side-padding);
+  }
+
+  &:not(.Intro--has-image) &-content.empty {
+    // When there is no image and intro content is empty, .Main-content should
+    // behave as if intro is not there, and have its normal top padding.
+    // However, we don't have a parent selector in CSS, so the .Intro-content
+    // sqs-layout container can't tell its parent that it's empty, meaning
+    // the parent can't tell its sibling. As a workaround, we turn off
+    // padding-bottom on .Intro-content, letting its top padding serve as the
+    // top padding for .Main-content. This works because they share the same
+    // top padding and background color.
+    padding-bottom: 0;
+  }
+
+  &-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    margin: 0; // Override
+  }
+}
+
+.Intro:not(.Intro--has-image) + .Main .Main-content {
+  padding-top: 0;
+}
+
+// =======================================================
+
+//    Main
+
+// =======================================================
+
+.Main {
+  background-color: @tweak-main-background-color;
+  .font-smoothing(@tweak-main-background-color);
+
+  &-content {
+    .border-box;
+    padding: @tweak-main-content-padding @tweak-site-side-padding;
+    .responsive-padding-vertical-large(@tweak-main-content-padding);
+    .responsive-padding-horizontal(@tweak-site-side-padding);
+  }
+}
+
+// -----------------------------------------
+
+//  Content Inset
+
+// Mixins
+
+.mixin-min-width (@width, @min) when (@width < @min) {
+  width: @min;
+}
+
+// Each column is 8.333% (1/12) of the total width.  A content inset of 1
+// indicates 1 less column on each side, which is (1 - (2 * 0.0833)) as a
+// percentage, and so on.
+@content-inset-width: percentage(1 - (@tweak-main-content-inset * 0.1667));
+.responsive-content-inset-width {
+  @media screen and (max-width: 1000px) {
+    .mixin-min-width(@content-inset-width, 66.6667%);
+  }
+  @media screen and (max-width: 900px) {
+    .mixin-min-width(@content-inset-width, 83.3333%);
+  }
+  @media screen and (max-width: 600px) {
+    .mixin-min-width(@content-inset-width, 100%);
+  }
+}
+
+// Selectors below indicate the actual places where content inset is applied,
+// which in this case includes main intros, and all sqs-layouts in main content
+// except for events.
+
+// Intro
+.Intro-content,
+// Main content
+.Main:not(.Main--events-list):not(.Main--events-item):not(.Main--blog-list) .Main-content .sqs-layout,
+// Blog List
+.tweak-blog-list-style-stacked .BlogList--posts-full .sqs-layout,
+// Index pages
+.Index-page .sqs-layout,
+// Footer top and bottom
+.Footer-blocks--top,
+.Footer-blocks--bottom,
+// Footer middle
+.tweak-footer-layout-stacked .Footer-blocks--middle {
+  .sqs-col-12 {
+    > .sqs-block:not(.float):not(.sqs-float-left):not(.sqs-float-right):not(.sqs-block-gallery):not(.sqs-block-image):not(.sqs-block-video):not(.sqs-block-map):not(.sqs-block-calendar):not(.sqs-block-menu):not(.sqs-block-tourdates):not(.sqs-block-summary-v2):not(.sqs-block-archive):not(.sqs-block-instagram) {
+      .border-box;
+
+      // width: @content-inset-width;
+      // .responsive-content-inset-width;
+
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}
+
+// =======================================================
+
+//    System Overrides
+
+// =======================================================
+
+// -----------------------------------------
+
+//  Blog
+
+.tweak-blog-list-style-stacked .BlogList-item-excerpt {
+  // Limit excerpt width in stacked mode to content inset width.
+  .border-box;
+
+  width: @content-inset-width;
+  max-width: 100%;
+  .responsive-content-inset-width;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// -----------------------------------------
+
+//  Album
+
+.sqs-audio-playlist {
+  // Spacing
+  .album-title,
+  .album-artist-name,
+  .album-description {
+    margin-bottom: 12px;
+  }
+
+  // Description links
+  .album-description a {
+    .link-color(@tweak-link-color);
+    .link-style(@tweak-link-color);
+  }
+}
+
+// -----------------------------------------
+
+//  System Share
+
+.squarespace-social-buttons.inline-style {
+  .link-color(@tweak-link-color);
+  .ss-social-button-icon {
+    display: none !important;
+  }
+}
+
+// -----------------------------------------
+
+//  Blockquote (HTML block)
+
+.sqs-block-html,
+.sqs-block-markdown {
+  blockquote {
+    margin-left: 0;
+    margin-right: 0;
+    border-left: 1px solid @tweak-line-color;
+    padding-left: 1.618em;
+  }
+}
+
+// -----------------------------------------
+
+//  Quote Block
+
+.mixin-quote-block-alignment {
+  .tweak-quote-block-alignment-left & {
+    text-align: left;
+  }
+  .tweak-quote-block-alignment-center & {
+    text-align: center;
+  }
+  .tweak-quote-block-alignment-right & {
+    text-align: right;
+  }
+}
+
+.sqs-block-quote {
+  // Spacing
+  padding-bottom: 0.5em;
+
+  // Alignment
+  .mixin-quote-block-alignment;
+
+  // Typography
+  .tweak-quote-block-quote-font;
+
+  // Source (byline)
+  .source {
+    // Spacing
+    padding-top: 0.5em;
+
+    // Alignment
+    .mixin-quote-block-alignment;
+
+    // Typography
+    .tweak-quote-block-source-font;
+  }
+}
+
+// -----------------------------------------
+
+//  Announcement bar
+
+.sqs-announcement-bar {
+  // z-index of 1000 won't overlap
+  // the mobile overlay menu.
+  z-index: 1000;
+}
+
+// -----------------------------------------
+
+//  Mobile Info Bar
+
+.sqs-mobile-info-bar {
+  z-index: 1000;
+
+  .is-overlay-active & {
+    .transform(translate3d(0, 100px, 0));
+  }
+}
+
+// -----------------------------------------
+
+//  Gallery
+
+.enable-load-effects {
+  .sqs-system-gallery {
+    opacity: 0;
+    .transition(opacity 300ms ease-out);
+
+    &.sqs-system-gallery-ready {
+      opacity: 1;
+    }
+  }
+}
+
+// -----------------------------------------
+
+//  Cart page
+
+.sqs-fullpage-shopping-cart-content > h2 {
+  margin-top: 0;
+}
+
+// -----------------------------------------
+
+//  Force full-width spacer blocks on mobile
+
+@media only screen and (max-width: 640px) {
+  .sqs-layout .sqs-col-12 > .sqs-block-spacer {
+    display: block;
+  }
+}
+
+// -----------------------------------------
+
+//  Fix for Form Block input text in overlay areas
+
+.sqs-alternate-block-style-container .sqs-block-form input {
+  color: #272727;
+}
+
+// -----------------------------------------
+
+// AMIGO
+
+// -----------------------------------------
+
+.Header {
+  background-color: white !important;
+  padding-bottom: 1.5rem;
+  color: black !important;
+}
+
+.Header-nav-folder {
+  background-color: white;
+}
+
+.Header-nav-item {
+  color: black !important;
+  font-size: 1.1rem;
+}
+
+@media only screen and (min-width: 1150px) {
+  .Header-nav-item {
+    font-size: 2rem;
+  }
+}
+
+.Header-nav-item:first-of-type {
+  color: #eb2507 !important;
+}
+
+#Amigo--Hero-Image {
+  z-index: 1;
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-position: bottom;    
+}
+
+@media only screen and (max-width: 1000px) {
+  #Amigo--Hero-Image {
+    height: 50vh;
+  }
+}
+
+.Amigo--Hero-Image img {
+  width: 100%;
+  height: auto;
+}
+
+.Amigo--Secondary-Nav {
+  z-index: 2;
+  margin: 0 auto;
+  display: flex;
+  width: 80%;
+  max-width: 1000px;
+  justify-content: space-around;
+  list-style: none;
+  padding: 2rem 1rem;
+  background-color: #fe0c07;
+  font-size: 1.5rem;
+  color: white;
+  position: absolute;
+  top: -4rem;
+}
+
+.Amigo--Secondary-Nav div:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+  .Amigo--Secondary-Nav {
+    display: none;
+  }
+}
+
+.Amigo--Secondary-Nav div {
+  position: relative;
+}
+
+.Amigo--Secondary-Nav div:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.Amigo--Secondary-Nav div:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.Amigo--Welcome-TextSlider {
+  background-color: #fafaea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 15rem 2rem;
+  position: relative;
+
+  h2 {
+    color: #fe0c07;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .Amigo--Welcome-TextSlider {
+    padding: 3rem 2.5rem;
+    text-align: center;
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      text-align: justify;
+    }
+  }
+}
+
+.Footer-inner {
+  background-color: #fafaea !important;
+  max-width: none !important;
+  padding: 35px 20px !important;
+}
+
+@media only screen and (max-width: 1000px) {
+  .Footer-inner {
+    width: auto;
+    margin: 0 auto !important;
+  }
+}
+
+.Amigo--Footer-BusinessAddress {
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+
+  h4 {
+    color: #cbcbcb;
+    font-size: 2rem;
+    margin: 1rem 0;
+    font-weight: 100;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .Amigo--Footer-BusinessAddress {
+    h4 {
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+}
+
+.Amigo--Footer-Home-Away {
+  max-width: 60rem;
+  margin: 10rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h2 {
+    color: #fe0c07;
+    font-size: 3.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: black;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .Amigo--Footer-Home-Away {
+    margin: 2.5rem auto;
+    text-align: justify;
+
+    h2 {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.Amigo--Footer-Newsletter {
+  background-color: #fafaea !important;
+}
+
+.Footer,
+.Footer-inner,
+.Footer-inner .clear {
+  background-color: #fafaea !important;.newsletter-block .newsletter-form-fields-wrapper
+}
+
+.Footer {
+  margin: 0 !important;
+}
+
+#_intro {
+  display: none;
+}
+
+.Mobile--Secondary-Nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+  background-color: red;
+  color: white;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1000px) {
+  .Mobile--Secondary-Nav {
+    display: none;
+    padding: 2rem 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .Index-page-content {
+    padding-top: 0 !important;
+  }
+}
+
+a.Header-nav-item {
+  position: relative;
+}
+
+a.Header-nav-item:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+a.Header-nav-item:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+* {
+  word-break: break-word;
+}
+
+.Header-nav-folder {
+  background-color: white !important;
+}
+
+.Header-nav-folder a {
+  color: black !important;
+}
+
+.tweak-header-primary-nav-hover-style-active .Header-nav .Header-nav-folder-item:hover {
+  color: #fe0c07 !important;
+}
+
+// Gallery page gallery component
+
+.Amigo--GalleryPage-ImageGallery-Container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (min-width: 1000px) {
+  .Amigo--GalleryPage-ImageGallery-Container {
+    display: flex;
+  }
+}
+
+.Amigo--GalleryPage-ImageGallery-Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4rem;
+  font-size: 3rem;
+  color: red;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1000px) {
+  .Amigo--GalleryPage-ImageGallery-Header {
+    width: 100%;
+    max-width: 1235px;
+    padding-bottom: 5rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .Amigo--GalleryPage-ImageGallery-Header {
+    font-size: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.Amigo--GalleryPage-ImageGallery-Header h2 {
+  color: red;
+}
+
+.Amigo--GalleryPage-ImageGallery-Header-Line {
+  border-top: 2px solid black;
+  width: 40%;
+}
+
+.Amigo--GalleryPage-ImageGallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Amigo--GalleryPage-ImageGallery-Image {
+  max-width: 33rem !important;
+}
+
+@media only screen and (max-width: 1000px) {
+  .Amigo--GalleryPage-ImageGallery-Image {
+    width: 100%;
+  }
+}
+
+.Amigo--GalleryPage-ImageGallery-Image-Caption {
+  max-width: 32rem;
+  font-size: 1rem;
+}
+
+.Amigo--GalleryPage-ImageGallery-Image-Caption h3 {
+  color: red;
+  margin-top: 1rem !important;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+@media only screen (min-width: 1000px) {
+  .Amigo--GalleryPage-ImageGallery-Image-Caption h3 {
+    font-size: 2.5rem;
+  }
+}
+
+.Amigo--GalleryPage-ImageGallery-Image-Caption p {
+  color: black;
+}
+
+.Amigo--GalleryPage-ImageGallery-Row {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 3rem;
+  text-align: justify;
+}
+
+@media only screen and (min-width: 1000px) {
+  .Amigo--GalleryPage-ImageGallery-Row {
+    width: 100%;
+    max-width: 1235px;
+  }
+}
+
+.Amigo--GalleryPage-ImageGallery-Row:nth-child(even) {
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 1000px) {
+  .Amigo--GalleryPage-ImageGallery-Row {
+    justify-content: center;
+  }
+
+  .Amigo--GalleryPage-ImageGallery-Row:nth-child(even) {
+    justify-content: center;
+  }
+}
+
+.Amigo--GalleryPage-Dope-ImageGallery-Container {
+  display: flex;
+  height: 80vh;
+  width: 100%;
+  max-width: 1240px;
+}
+
+.Amigo--GalleryPage-Dope-ImageGallery-Menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 35%;
+  align-items: center;
+}
+
+.Amigo--GalleryPage-Dope-ImageGallery-MenuItem h2 {
+  text-transform: uppercase;
+  cursor: pointer;
+  color: red;
+  font-size: 2rem;
+}
+
+#Amigo--GalleryPage-Dope-ImageGallery-Image {
+  width: 100%;
+  background-image: url(https://res.cloudinary.com/swerg/image/upload/v1566710281/amigob1_wlhfx6.png);
+  background-size: cover;
+  background-position: center center;
+}
+
+.Amigo--GalleryPage-ImageGallery-Container {
+  background-color: #fafaea;
+}
+
+@media screen and (min-width: 1000px) {
+  .Amigo--GalleryPage-ImageGallery-Container {
+    padding: 6rem;
+  }
+}
+
+.Amigo--Secondary-Nav-Btn {
+  padding: 1rem 0;
+}
+
+.newsletter-block .newsletter-form-wrapper--layoutStack .newsletter-form-field-wrapper {
+  max-width: none !important;
+}
+
+.newsletter-block .newsletter-form-fields-wrapper {
+  width: 100% !important;
+}
+
+/* Home Page Text Slider */
+
+#Welcome-TextSlider-Content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.gallery-arrow {
+  font-size: 4rem;
+  color: red;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .gallery-arrow {
+    font-size: 2rem;
+  }
+
+  .TextSlider-Slide {
+    width: 30rem;
+  }
+
+  #gallery-arrow-prev {
+    display: none;
+  }
+}
+
+.TextSlider-Slide {
+  text-align: center;
+    padding: 0 2rem;
+    width: 100%;
+    max-width: 60rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gallery-arrow-prev {
+  margin-right: auto;
+}
+
+#gallery-arrow-next {
+  margin-left: auto;
+}

@@ -1,0 +1,695 @@
+/* This is not included in the bundle, this is just to keep track of CSS that is currently in the Checkfront site */
+
+@import url("https://fonts.googleapis.com/css?family=Barlow&display=swap");
+
+* {
+  font-family: "Barlow", sans-serif;
+  font-weight: inherit;
+}
+
+.cf-item-list .cf-item-data img {
+  max-height: none !important;
+}
+
+.img-rounded {
+  border-radius: 0 !important;
+  min-width: 15rem !important;
+  object-fit: cover;
+  height: 190px !important;
+}
+
+.AVAILABLE {
+  border-radius: 0 !important;
+  background-color: #ff0c01 !important;
+  color: white !important;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  #cf-cal {
+    width: 100%;
+  }
+
+  .col-sm-3 {
+    width: 100% !important;
+  }
+
+  .cf-item-title-summary,
+  .cf-title,
+  .cf-price,
+  .cf-item-summary {
+    display: block !important;
+  }
+
+  .cf-title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .cf-item-title-summary {
+    margin-top: 1rem;
+    padding: 0 !important;
+  }
+
+  .mobile-title {
+    display: none !important;
+  }
+}
+
+.SOLDOUT {
+  background-color: #f9f9e8 !important;
+  border: 1px solid black;
+}
+
+.AVAILABLE,
+.SOLDOUT {
+  border-radius: 0 !important;
+}
+
+.AVAILABLE:hover,
+.SOLDOUT:hover {
+  background-color: black !important;
+  color: white !important;
+}
+
+.fa {
+  /* hide default book now / details icons */
+  display: none !important;
+}
+
+.ct {
+  text-align: center;
+}
+
+.cf-btn-book:after {
+  content: "→";
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#page {
+  background-color: #f9f9e8 !important;
+}
+
+#content {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+label {
+  text-transform: uppercase;
+}
+
+/* TOP CHECK IN FORM */
+
+#sidebar-wrapper {
+  max-width: 100% !important;
+  width: 100%;
+}
+
+.form-horizontal {
+  display: flex;
+}
+
+@media screen and (max-width: 1000px) {
+  .form-horizontal {
+    flex-direction: column;
+  }
+}
+
+.form-horizontal:nth-child(0) {
+  flex-grow: 1;
+}
+
+.form-horizontal:nth-child(1) {
+  flex-grow: 2;
+}
+
+@media screen and (min-width: 1000px) {
+  .cf-item-list .cf-item-data .cf-item-title-summary {
+    padding-left: 3rem;
+  }
+
+  #bar_div {
+    max-width: 23rem;
+  }
+}
+
+.input-group input {
+  background-color: #f9f9e8;
+  border: 1px solid black;
+  font-size: 1.5rem;
+  padding: 1.5rem;
+}
+
+.btn-default {
+  visibility: hidden;
+}
+
+/* Calendar */
+
+.head {
+  background-color: #f9f9e8;
+}
+
+#cf-cal {
+  background-color: #f9f9e8;
+  z-index: 1;
+}
+
+#cf-cal,
+.cf-cal-sm {
+  max-width: 18rem;
+}
+
+#cf-query {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  #cf-query {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cf-cal-sm.table {
+    position: relative;
+    left: 0;
+  }
+
+  .clearfix {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+  }
+
+  #cf-cal {
+    margin: 0 auto;
+  }
+}
+
+.cf-cal-sm {
+  /* background: none; */
+}
+
+#cf-cal > table > tfoot > tr > td {
+  display: none;
+}
+
+#cf-cal > table > thead > tr:nth-child(2) {
+  display: none;
+}
+
+#cf-new-booking {
+  display: none;
+}
+
+.cf-item-status:hover {
+  color: white;
+  background-color: #ff0c01 !important;
+}
+
+#cf-items
+  > div.cf-item-list
+  > div
+  > div
+  > div.cf-item-info.pull-left.col-xs-4.col-sm-3.col-md-3
+  > ul
+  > li
+  > .SOLDOUT:hover,
+#cf-items
+  > div.cf-item-list
+  > div
+  > div
+  > div.cf-item-info.pull-left.col-xs-4.col-sm-3.col-md-3
+  > ul
+  > li
+  > .SOLDOUT:hover
+  a,
+#cf-items
+  > div.cf-item-list
+  > div
+  > div
+  > div.cf-item-info.pull-left.col-xs-4.col-sm-3.col-md-3
+  > ul
+  > li
+  > .AVAILABLE:hover {
+  background-color: black !important;
+  color: white !important;
+}
+
+#cf-items
+  > div.cf-item-list
+  > div
+  > div
+  > div.cf-item-info.pull-left.col-xs-4.col-sm-3.col-md-3
+  > ul
+  > li
+  > a {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  #cf-items
+    > div.cf-item-list
+    > div
+    > div
+    > div.cf-item-info.pull-left.col-xs-4.col-sm-3.col-md-3
+    > ul
+    > li
+    > a {
+    font-size: 1.5rem;
+    padding: 1.25rem;
+  }
+}
+
+.res-btn.ct {
+  color: black !important;
+}
+
+.cf-cal-sm > tbody > tr > td {
+  width: 25px;
+}
+
+#cf-cal > table > tbody,
+#cf-cal > table > tbody > tr > td {
+  border: 1px solid black !important;
+}
+
+.cf-cal-sm a {
+  background-color: #f9f9e8 !important;
+  border: none !important;
+}
+
+/* Selected Date Tiles */
+.Q a,
+#cf-cal > table > tbody > tr > .Q > a {
+  opacity: 1;
+  background-color: #ff0c01 !important;
+  color: white !important;
+  border: solid 0px #000 !important;
+}
+
+/* Sold Out Calendar Tile */
+.X,
+.X a,
+.cf-cal-sm .F a,
+#cf-cal > table > tbody > tr > td.F > a {
+  background-color: #f9f9e8 !important;
+  color: #f9f9e8 !important;
+  text-shadow: none !important;
+}
+
+.clearfix {
+  display: flex;
+}
+
+.cf-item-list.cf-item-data.img {
+  max-height: 100rem;
+  height: auto;
+}
+
+#ui-datepicker-div {
+  background-color: #f9f9e8;
+  width: 60em !important;
+}
+
+.ui-datepicker-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.ui-datepicker td.A a {
+  background-color: #f9f9e8 !important;
+  border: 1px solid black !important;
+}
+
+.ui-datepicker-prev a {
+  color: #f9f9e8 !important;
+}
+
+#ui-datepicker-div
+  > div.ui-datepicker-group.ui-datepicker-group-first
+  > table
+  > tbody
+  > tr
+  > td.A.ui-datepicker-current-day
+  > a {
+  background-color: #ff0c01 !important;
+  color: white !important;
+}
+
+#cf-cal > table > tbody > tr > td > a {
+  border: solid 0px black !important;
+  color: #ff0c01;
+}
+
+#cf-month {
+  border: none !important;
+  background-color: #f9f9e8 !important;
+  font-size: 1.1rem !important;
+  position: relative !important;
+  left: -4rem !important;
+  -webkit-appearance: none !important;
+  color: #000 !important;
+}
+
+#cf-month:focus {
+  outline: none;
+}
+
+#cf-cal > table {
+  border: none !important;
+}
+
+#cf-cal {
+  background-color: #f9f9e8 !important;
+}
+
+#cf-query-end_date,
+#cf-query-start_date {
+  font-size: 1.25rem;
+  min-width: 10rem;
+}
+
+label {
+  font-size: 1.25rem;
+}
+
+.res-btn.ct {
+  font-weight: bold !important;
+}
+
+.res-btn.ct:hover {
+  background-color: #f9f9e8 !important;
+  color: #ff0c01 !important;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0px !important;
+}
+
+.cf-item-panel {
+  display: none;
+  margin: 0px;
+  overflow: visible !important;
+  background: #fafaea !important;
+  min-height: 315px;
+}
+
+.modal-header,
+.modal-footer {
+  background: #fafaea !important;
+}
+
+.cf-item.clearfix {
+  background-color: #fafaea !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fafaea !important;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+#start_date,
+#end_date {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background-color: #fafaea !important;
+}
+
+.btn-default:hover {
+  color: #333;
+  background-color: #fafaea !important;
+  border-color: #adadad;
+}
+
+.btn-primary {
+  background: #000 !important;
+  color: white !important;
+  border-color: #000 !important;
+  margin: 0 !important;
+}
+
+.form-horizontal {
+  background-color: #fafaea !important;
+}
+
+@media screen and (max-width: 1000px) {
+  #bar_div {
+    width: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  .img-responsive {
+    max-width: none !important;
+    width: 500px;
+  }
+
+  .row {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .cf-item-list .cf-item-data {
+    height: auto !important;
+  }
+
+  .cf-item-list .cf-item-data .cf-item-thumb {
+    width: 100%;
+  }
+
+  .cf-mobile.col-xs-8.col-sm-9.col-md-9.pull-left {
+    width: 100%;
+  }
+
+  .cf-item-list .cf-item-data img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  #cf-query {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cf-item-list .cf-item-data {
+    border-bottom: solid 1.5px #000 !important;
+    padding: 1.5em 0em !important;
+    padding-top: 3.5em !important;
+  }
+
+  .cf-mobile.col-xs-8.col-sm-9.col-md-9.pull-left {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cf-item-info.pull-left.col-xs-4.col-sm-3.col-md-3 {
+    margin: 2rem auto;
+  }
+}
+
+.input-group-btn.date_btn {
+  display: none;
+}
+
+.input-group {
+  width: 100% !important;
+}
+
+@media screen and (min-width: 1000px) {
+  .cf-item-list .cf-item-data {
+    height: 300px !important;
+  }
+}
+
+.modal-body {
+  width: 100%;
+}
+
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+
+/* HEEEYYYYY ITS ME */
+
+.modal-header,
+.modal-footer {
+  background: #fafaea !important;
+}
+
+.cf-item.clearfix {
+  background-color: #fafaea !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fafaea !important;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+#start_date,
+#end_date {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background-color: #fafaea !important;
+}
+
+.btn-default:hover {
+  color: #333;
+  background-color: #fafaea !important;
+  border-color: #adadad;
+}
+
+.btn-primary {
+  background: #000 !important;
+  color: white !important;
+  border-color: #000 !important;
+  margin: 0 !important;
+}
+.form-horizontal {
+  background-color: #fafaea !important;
+}
+
+.ui-datepicker td {
+  padding: 0;
+  margin: 0;
+  border: solid 0px transparent;
+}
+
+.cf-item-list .cf-item-data {
+  border-bottom: solid 1.5px #000 !important;
+  padding: 1.5em 0em !important;
+  padding-top: 3.5em !important;
+  height: 300px !important;
+}
+
+@media screen and (max-width: 1000px) {
+  .cf-item-list .cf-item-data {
+    height: auto !important;
+  }
+
+  .cf-item-list .cf-item-data .cf-item-thumb {
+    width: 100%;
+  }
+
+  .cf-mobile.col-xs-8.col-sm-9.col-md-9.pull-left {
+    width: 100%;
+  }
+
+  .cf-item-list .cf-item-data img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .cf-item-list .cf-item-data .cf-item-thumb {
+    text-align: right;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .cf-item-info {
+    min-width: 140px;
+    max-width: 100% !important;
+  }
+}
+
+.form-control {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+#cf-query-end_date,
+#cf-query-start_date {
+  font-size: 1.25rem;
+  min-width: 10rem;
+  font-family: Barlow;
+}
+
+#cf-query select {
+  max-width: 225px;
+  font-size: 13px;
+  font-family: Barlow;
+}
+
+table.cf-cal-sm {
+  z-index: 1;
+  margin: 0 auto;
+  width: 19.5rem !important;
+}
+
+#cf-query label {
+  display: block;
+  clear: both;
+  margin-bottom: 2px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+@media only screen and (max-width: 1000px) {
+  .Amigo--Welcome-TextSlider {
+    padding: 6rem 2.5rem;
+    text-align: center;
+  }
+}
+.Index-page-content {
+  padding-bottom: 35px;
+}
+
+.input-group input {
+  background-color: #f9f9e8;
+  border: 1px solid black;
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  font-family: Barlow !important;
+}

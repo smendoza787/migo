@@ -1,0 +1,271 @@
+<!doctype html>
+<html {.if authenticatedAccount}data-authenticated-account{.end}>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1">
+
+    {squarespace-headers}
+  </head>
+  <body id="{squarespace.page-id}" class="{squarespace.page-classes} sqs-has-custom-cart{.if website.logoImageUrl} has-logo-image{.or} has-site-title{.end}{.if website.siteTagLine} has-tagline{.end}{.if website.socialAccounts.0} has-social{.end}{.if showCart} has-cart{.end}{.if item}{.or}{.equal? collection.typeName "index"}{.section collection}{.repeated section collections}{.background-source-video?} has-parallax-images{.or}{.section mainImage} has-parallax-images{.end}{.end}{.end}{.end}{.or}{.section collection}{.background-source-video?} has-parallax-images{.or}{.section mainImage} has-parallax-images{.end}{.end}{.end}{.end}{.end} enable-load-effects<squarespace:navigation navigationId="mainNavigation">{.if items.0} has-primary-nav{.end}</squarespace:navigation><squarespace:navigation navigationId="secondaryNavigation">{.if items.0} has-secondary-nav{.end}</squarespace:navigation><squarespace:navigation navigationId="footerMainNavigation">{.if items.0} has-footer-nav{.end}</squarespace:navigation>{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "gallery"} has-index-gallery-first{.end}{.end}{.end}{.end}{.if userAccountsContext.showSignInLink} has-user-accounts{.end}" data-controller="HashManager, SiteLoader, MobileClassname">
+    <div class="Loader"></div>
+
+    {@|apply mobile.block}
+
+    <div class="Parallax-host-outer">
+      <div class="Parallax-host" data-parallax-host>
+        {.equal? collection.typeName "index"}
+          {.section collection}
+            {.repeated section collections}
+              {.var @collectionId id}
+              {.background-source-video?}
+                <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+              {.or}
+                {.section mainImage}
+                  <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+                {.end}
+              {.end}
+            {.end}
+          {.end}
+        {.or}
+          {.equal? collection.typeName "products"}
+          {#  The system Product collection does not support video backgrounds  }
+            {.section collection}
+              {.var @collectionId id}
+              {.section mainImage}
+                <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+              {.end}
+            {.end}
+          {.or}
+            {.if item}{.or}
+              {.section collection}
+                {.var @collectionId id}
+                {.background-source-video?}
+                  <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+                {.or}
+                  {.section mainImage}
+                    <div class="Parallax-item" data-parallax-item data-parallax-id="{@collectionId}"></div>
+                  {.end}
+                {.end}
+              {.end}
+            {.end}
+          {.end}
+        {.end}
+      </div>
+    </div>
+
+    <div class="Site" data-nc-base="header" data-controller="AncillaryLayout">
+      <div class="sqs-announcement-bar-dropzone"></div>
+
+      <header class="Header Header--top">
+        <div class="Header-inner Header-inner--top" data-nc-group="top">
+          <div data-nc-container="top-left">
+
+            <div class="Header-search" data-nc-element="search">
+              <form class="Header-search-form" action="/search" method="get">
+                <input class="Header-search-form-input" name="q" type="text" spellcheck="false" value="" autocomplete="off" placeholder="{localizedStrings.search}" />
+                <button class="Header-search-form-submit" type="submit" data-test="template-search">
+                  <svg class="Icon Icon--search--small" viewBox="0 0 15 15">
+                    <use xlink:href="/assets/ui-icons.svg#search-icon--small"></use>
+                  </svg>
+                  <svg class="Icon Icon--search" viewBox="0 0 20 20">
+                    <use xlink:href="/assets/ui-icons.svg#search-icon"></use>
+                  </svg>
+                </button>
+              </form>
+            </div>
+
+          </div>
+          <div data-nc-container="top-center">
+            {.if userAccountsContext.showSignInLink}
+              <div class="Header-account" data-nc-element="account" data-controller="UserAccountLink">
+                <button class="user-accounts-text-link">
+                  <span class="unauth">{localizedStrings.signIn}</span>
+                  <span class="auth">{localizedStrings.myAccount}</span>
+                </button>
+                <div class="user-accounts-icon">
+                  {@|apply user-account-icon.block}
+                </div>
+              </div>
+            {.end}
+            {.if website.socialAccounts.0}
+              <div class="Header-social" data-nc-element="social">
+                {@|apply social-links.block}
+              </div>
+            {.end}
+          </div>
+          <div data-nc-container="top-right">
+
+            {@|apply cart.block}
+
+          </div>
+        </div>
+      </header>
+
+      <div class="Site-inner{.equal? collection.typeName "index"} Site-inner--index{.end}"{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.equal? typeName "gallery"} data-controller="HeaderOverlay"{.end}{.end}{.end}{.or}{.if item}{.or}{.section collection}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.end}{.end}>
+
+        <header class="Header Header--bottom{.if item}{.or}{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} Header--overlay{.or}{.section mainImage} Header--overlay{.end}{.end}{.end}{.equal? typeName "gallery"} Header--index-gallery{.end}{.end}{.end}{.or}{.section collection}{.background-source-video?} Header--overlay{.or}{.section mainImage} Header--overlay{.end}{.end}{.end}{.end}{.end}">
+          <div class="Header-inner Header-inner--bottom" data-nc-group="bottom">
+            <div data-nc-container="bottom-left">
+              <nav class="Header-nav Header-nav--primary" data-nc-element="primary-nav" data-content-field="navigation">
+                <squarespace:navigation navigationId="mainNavigation" template="header-nav" />
+              </nav>
+            </div>
+            <div data-nc-container="bottom-center">
+
+              <a href="/" class="Header-branding" data-nc-element="branding" data-content-field="site-title">
+                {.section website}
+                  {.section logoImageUrl}
+                    <img src="{logoImageUrl}?format=1500w" alt="{siteTitle}" class="Header-branding-logo" />
+                  {.or}
+                    {siteTitle}
+                  {.end}
+                {.end}
+              </a>
+              {.section website}{.section siteTagLine}<div class="Header-tagline" data-nc-element="tagline">{@}</div>{.end}{.end}
+
+            </div>
+            <div data-nc-container="bottom-right">
+
+              <nav class="Header-nav Header-nav--secondary" data-nc-element="secondary-nav" data-content-field="navigation">
+                <squarespace:navigation navigationId="secondaryNavigation" template="header-nav" />
+              </nav>
+
+            </div>
+          </div>
+        </header>
+
+        <div class="Content-outer">
+          {@|apply intro.block}
+          
+          {.if collection}{.if item}{.or}{.equal? collection.typeName "index"}{.or}
+            {.equal? collection.typeName "page"}
+            {.or}
+              {collection|apply intro.block}
+            {.end}
+          {.end}{.end}{.end}
+
+          <main class="{.equal? collection.typeName "index"}Index{.if collection.collections.0}{.or} Index--empty{.end}{.or}Main{.if collection.typeName} Main--{collection.typeName}{.equal? collection.typeName "page"}{.or}{.if item}-item{.or}-list{.end}{.end}{.end}{.end}" {.equal? collection.typeName "index"}data-collection-id="{collection.id}"{.end}{.equal? collection.typeName "index"} data-controller="IndexFirstSectionHeight, Parallax, IndexNavigation"{.end}>
+            {.equal? collection.typeName "index"}
+              {squarespace.main-content}
+            {.or}
+              <section class="Main-content" data-content-field="main-content">
+                {squarespace.main-content}
+              </section>
+            {.end}
+          </main>
+
+        </div>
+      </div>
+
+      {@|apply footer.block}
+
+    </div>
+
+    <squarespace:script src="site-bundle.js" combo="false" />
+
+    {squarespace-footers}
+
+    <div class="teepee">
+      <a href="/book">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 369.8 339.19"><defs><style>.cls-1{fill:#ff0c01;}.cls-2{font-size:70px;fill:#fff;font-family:DINCondensed-Bold, DIN Condensed;font-weight:700;}</style></defs><title>Asset 6</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="192.73 45.39 217.98 4.08 213.71 1.47 213.71 1.47 211.31 0 210.4 1.47 187.16 38.97 163.93 1.47 163.04 0.04 156.35 4.04 181.04 45.33 1.39 339.19 155.99 339.19 158.98 334.19 161.97 329.19 187.16 287.03 212.36 329.19 215.35 334.19 218.34 339.19 368.4 339.19 192.73 45.39"/><text class="cls-2" transform="translate(145.42 179.51)">GET<tspan x="-45.46" y="84">A ROOM</tspan></text></g></g></svg>
+      </a>
+    </div>
+  </body>
+</html>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+<script>
+  {#  Home Page Image Gallery }
+
+  $("#Amigo--Hero-Image").css('background-image', 'url(https://au-assets.s3-us-west-2.amazonaws.com/assets/resources/Suites+Collections/New+Folder+/IMG_4294.jpg)')
+
+  $("#francis-btn").hover(function() {
+    $("#Amigo--Hero-Image").css('background-image', 'url(https://au-assets.s3-us-west-2.amazonaws.com/assets/resources/Suites+Collections/New+Folder+/IMG_4294.jpg)')
+  })
+
+  $("#velma-btn").hover(function() {
+    $("#Amigo--Hero-Image").css('background-image', 'url(https://au-assets.s3-us-west-2.amazonaws.com/assets/resources/Suites+Collections/New+Folder+/Credit_Brandon_Lopez2.jpg)')
+  })
+
+  $("#merle-btn").hover(function() {
+    $("#Amigo--Hero-Image").css('background-image', 'url(https://au-assets.s3-us-west-2.amazonaws.com/assets/resources/Suites+Collections/New+Folder+/IMG_4269.jpg)')
+  })
+
+  $("#peewee-btn").hover(function() {
+    $("#Amigo--Hero-Image").css('background-image', 'url(https://au-assets.s3-us-west-2.amazonaws.com/assets/resources/Suites+Collections/New+Folder+/IMG_4015.jpg)')
+  })
+
+  {#  /end Home Page Image Gallery }
+
+  {#  Gallery Page Image Gallery }
+
+  $("#velma").hover(function() {
+    $("#Amigo--GalleryPage-Dope-ImageGallery-Image").css('background-image', 'url(https://res.cloudinary.com/swerg/image/upload/v1566710281/amigob1_wlhfx6.png)')
+  })
+  
+  $("#merle").hover(function() {
+    $("#Amigo--GalleryPage-Dope-ImageGallery-Image").css('background-image', 'url(https://res.cloudinary.com/swerg/image/upload/v1566710281/amigob2_z6e53h.png)')
+  })
+  
+  $("#peewee").hover(function() {
+    $("#Amigo--GalleryPage-Dope-ImageGallery-Image").css('background-image', 'url(https://res.cloudinary.com/swerg/image/upload/v1566710281/amigob3_oupq5g.png)')
+  })
+  
+  $("#delKing").hover(function() {
+    $("#Amigo--GalleryPage-Dope-ImageGallery-Image").css('background-image', 'url(https://res.cloudinary.com/swerg/image/upload/v1566710281/amigob1_wlhfx6.png)')
+  })
+  
+  $("#king").hover(function() {
+    $("#Amigo--GalleryPage-Dope-ImageGallery-Image").css('background-image', 'url(https://res.cloudinary.com/swerg/image/upload/v1566710281/amigob2_z6e53h.png)')
+  })
+  
+  $("#dbQueen").hover(function() {
+    $("#Amigo--GalleryPage-Dope-ImageGallery-Image").css('background-image', 'url(https://au-assets.s3-us-west-2.amazonaws.com/assets/resources/Suites+Collections/New+Folder+/Credit_Meg_Ranegar1.jpg)')
+  })
+  
+  $("#francis").hover(function() {
+    $("#Amigo--GalleryPage-Dope-ImageGallery-Image").css('background-image', 'url(https://au-assets.s3-us-west-2.amazonaws.com/assets/resources/Suites+Collections/New+Folder+/IMG_4018.jpg)')
+  })
+
+  {#  /end Gallery Page Image Gallery }
+
+  {#  TEXT SLIDER  }
+
+  let currSlide = 0;
+  const slideTitles = [
+    "WELCOME AMIGO",
+    "CASUAL COMFORT",
+    "YOUR HOME AWAY FROM HOME"
+  ];
+  const slideBodies = [
+    "<h3 id='Slide-Body-Text'>The Amigo Motor Lodge is a newly renovated boutique motel with 60-year old bones. Modern furnishings meet minimalist design to create a space that is friendly, casual and above all, comfortable. The property is complete with a teepee, hot tub, sun room and much more as the property is a constant work in progress.</h3>",
+    "<h3 id='Slide-Body-Text'>At the Amigo we strive to surprise you with premium amenities at a reasonable price. From our mattresses to the lighting fixtures to the bath products in each room, we've tried to elevate the motel experience. Here is an assortment of the amenities you will find during your stay: TUFT AND NEEDLE MATTRESSES, MALIN AND GOETZ PRODUCTS, LED TVs, CONWAY ELECTRIC POWER OUTLETS, BALTIC BIRCH BED FRAMES, ACCENT PILLOWS FROM THE CITIZENRY, WATER-SAVING TOILETS AND SHOWERS, CONCRETE COUNTERTOPS, UNIQUE WALL ACCENTS, ART AND MUCH MORE...</h3>",
+    "<h3 id='Slide-Body-Text'>At the Amigo, we want to be a place to rest your hat after a long day of adventure in the mountains, on the river or just soaking in the hot springs. We created our motel to be a place you actually want to spend time during your travels to connect with friends, loved ones or just your own thoughts. From the uniquely decorated rooms to the common spaces, no stone has been left unturned on our ongoing, now year-long renovation of the property. We still have lots of work to do, but it's been a fun process turning our concept into reality. We look forward to hosting you at the Amigo! <b>- Philip and Kaitlyn</h3></b>"
+  ];
+
+  $("#gallery-arrow-next").click(function() {
+    if (currSlide === slideTitles.length - 1) {
+      currSlide = 0;
+    } else {
+      currSlide += 1;
+    }
+
+    $("#Slide-Title").replaceWith(`<h2 id="Slide-Title">${slideTitles[currSlide]}</h2>`);
+    $("#Slide-Body-Text").replaceWith(slideBodies[currSlide]);
+  })
+
+  $("#gallery-arrow-prev").click(function() {
+    if (currSlide === 0) {
+      currSlide = slideTitles.length - 1;
+    } else {
+      currSlide -= 1;
+    }
+
+    $("#Slide-Title").replaceWith(`<h2 id="Slide-Title">${slideTitles[currSlide]}</h2>`);
+    $("#Slide-Body-Text").replaceWith(slideBodies[currSlide]);
+  })
+
+  {#  END TEXT SLIDER  }
+</script>

@@ -1,0 +1,85 @@
+<section>
+  <section class="Intro{.background-source-video?} Intro--has-image{.or}{.if mainImage} Intro--has-image{.end}{.end}" data-parallax-original-element data-parallax-id="{id}"{.background-source-video?} data-controller="Parallax"{.or}{.if mainImage} data-controller="Parallax"{.end}{.end}>
+    <squarespace:block-field id="{id}_intro" class="Intro-content{.background-source-video?} sqs-alternate-block-style-container{.or}{.if mainImage} sqs-alternate-block-style-container{.end}{.end}" columns="12" label="{localizedStrings.intro}" />
+    {.background-source-video?}
+      <figure class="Intro-image" data-parallafeex-image-wrapper>
+        {@|apply background-media.block}
+      </figure>
+    {.or}
+      {.if mainImage}
+        <figure class="Intro-image" data-parallax-image-wrapper>
+          {@|apply background-media.block}
+        </figure>
+      {.end}
+    {.end}
+  </section>
+
+  {.equal? collection.urlId "home"}
+    {#  This is the Hero Image/Secondary Nav, it should only display on the HOME page  }
+    <section id="Amigo--Hero-Image"></section>
+    <a class="Mobile--Secondary-Nav" href="#">Book Now <span>→</span></a>
+    <div class="Amigo--Welcome-TextSlider">
+      <div class="Amigo--Secondary-Nav">
+        <div class="Amigo--Secondary-Nav-Btn" id="francis-btn"><p>FRANCIS</p></div>
+        <div class="Amigo--Secondary-Nav-Btn" id="velma-btn"><p>VELMA</p></div>
+        <div class="Amigo--Secondary-Nav-Btn" id="merle-btn"><p>MERLE</p></div>
+        <div class="Amigo--Secondary-Nav-Btn" id="peewee-btn"><p>PEEWEE</p></div>
+        <div class="Amigo--Secondary-Nav-Btn" id="see-more-btn"><a href="/gallery">SEE MORE <span>→</span></a></div>
+      </div>
+      <div id="Welcome-TextSlider-Content">
+        <div id="gallery-arrow-prev" class="gallery-arrow">←</div>
+        <div class="TextSlider-Slide">
+          <h2 id="Slide-Title">Welcome Amigo</h2>
+          <h3 id="Slide-Body-Text">The Amigo Motor Lodge is a newly renovated boutique motel with 60-year old bones. Modern furnishings meet minimalist design to create a space
+              that is friendly, casual and above all, comfortable. The property is complete
+              with a teepee, hot tub, sun room and much more as the property is a
+              constant work in progress.
+          </h3>
+        </div>
+        <div id="gallery-arrow-next" class="gallery-arrow">→</div>
+      </div>
+    </div>
+  {.end}
+
+  {.equal? collection.urlId "gallery"}
+    {#  This is the Gallery component that will only display on the GALLERY page  }
+    
+    <div class="Amigo--GalleryPage-ImageGallery-Container">
+      <div class="Amigo--GalleryPage-ImageGallery-Header">
+        <div class="ImageGallery-Header-Node">
+          <p>we're like</p>
+        </div>
+        <div class="Amigo--GalleryPage-ImageGallery-Header-Line"></div>
+        <div class="ImageGallery-Header-Node">
+          <p>really pretty</p>
+        </div>
+      </div>
+      <div class="Amigo--GalleryPage-Dope-ImageGallery-Container">
+        <div class="Amigo--GalleryPage-Dope-ImageGallery-Menu">
+          <div id="francis" class="Amigo--GalleryPage-Dope-ImageGallery-MenuItem">
+            <h2>Francis</h2>
+          </div>
+          <div id="velma" class="Amigo--GalleryPage-Dope-ImageGallery-MenuItem">
+            <h2>Velma</h2>
+          </div>
+          <div id="merle" class="Amigo--GalleryPage-Dope-ImageGallery-MenuItem">
+            <h2>Merle</h2>
+          </div>
+          <div id="peewee" class="Amigo--GalleryPage-Dope-ImageGallery-MenuItem">
+            <h2>Peewee</h2>
+          </div>
+          <div id="delKing" class="Amigo--GalleryPage-Dope-ImageGallery-MenuItem">
+            <h2>Deluxe King</h2>
+          </div>
+          <div id="king" class="Amigo--GalleryPage-Dope-ImageGallery-MenuItem">
+            <h2>King</h2>
+          </div>
+          <div id="dbQueen" class="Amigo--GalleryPage-Dope-ImageGallery-MenuItem">
+            <h2>Double Queen</h2>
+          </div>
+        </div>
+        <div id="Amigo--GalleryPage-Dope-ImageGallery-Image"></div>
+      </div>
+    </div>
+  {.end}
+</section>
